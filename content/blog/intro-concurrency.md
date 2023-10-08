@@ -18,8 +18,8 @@ Parallel computing or parallelism, often confused with concurrency, is the simul
 
 
 {{<cards>}}
-  {{<card link="https://freecontent.manning.com/wp-content/uploads/concurrency-vs-parallelism_02.jpg" title="Parallelism" image="/Images/concurrency-vs-parallelism_02.jpg">}}
- {{<card link="https://freecontent.manning.com/wp-content/uploads/concurrency-vs-parallelism_01.jpg" title="Concurrency" image="/Images/concurrency-vs-parallelism_01.jpg" >}}
+  {{<card link="https://freecontent.manning.com/wp-content/uploads/concurrency-vs-parallelism_02.jpg" title="Parallelism" image="/images/concurrency-vs-parallelism_02.jpg">}}
+ {{<card link="https://freecontent.manning.com/wp-content/uploads/concurrency-vs-parallelism_01.jpg" title="Concurrency" image="/images/concurrency-vs-parallelism_01.jpg" >}}
 {{</cards>}}
 
 {{<cards>}}
