@@ -233,26 +233,26 @@ package main
 import "fmt"
 
 func main() {
+	ch := make(chan int, 1) // Making a channel that takes in integers
 
-    ch := make(chan int, 1) // Making a channel that takes in integers
+	// Created a goroutine that contains the sender
 
-    // Created a goroutine that contains the sender
-
-    go func() {
-
-        fmt.Println("Sent: 10")
-        ch <- 10
+	go func() {
+		fmt.Println("Sent: 10")
+		ch <- 10
 		fmt.Println("Sent: 11")
-        ch <- 11
-    }()
+		ch <- 11
+	}()
 
-  
-    v := <-ch
-    fmt.Println("Received", v)
+	v := <-ch
 
-    v = <-ch
-    fmt.Println("Received", v)
+	fmt.Println("Received", v)
+
+	v = <-ch
+
+	fmt.Println("Recived", v)
 }
+
 
 ```
 
