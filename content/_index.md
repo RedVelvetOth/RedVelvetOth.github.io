@@ -1,5 +1,5 @@
 ---
-title: Hextra Theme
+title: Home Page
 layout: hextra-home
 ---
 
