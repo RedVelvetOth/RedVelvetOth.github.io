@@ -33,31 +33,31 @@ Parallel computing or parallelism, often confused with concurrency, is the simul
 
 ## Goroutines
 
-Goroutines, are the functions that can run concurrently with the rest of the code. Goroutine are dissimilar to threads in the fact that goroutines are less expensive to create, can communicate with each other using channels and they can run on a single OS thread.
+Goroutines, are the functions that can run concurrently with the rest of the code. Goroutines are dissimilar to threads in the fact that goroutines are less expensive to create, can communicate with each other using channels and they can run on a single OS thread.
 
 To create a goroutine, create a normal function and add the *go* keyword when calling it. 
 
 ```go {filename = "Concurency"}
 func nowthatshot() {
+
 	fmt.Println("maybe slow")
 
 	time.Sleep(1 * time.Second)
 
 	fmt.Println("fine im done")
+
 	}
 
 func main() {
-	fmt.Println("start")
 
+	fmt.Println("start")
 	// Create a goroutine to do something slow 
 	go nowthatshot()
-
 	fmt.Println("waiting for the slow func") 
 
 	time.Sleep(500 * time.Millisecond)
 
 	fmt.Println("Finished the main task!") 
-
 	time.Sleep(1 * time.Second)
 	}
 ```
@@ -86,7 +86,7 @@ By default channels are unbuffered, meaning that they will only accept sends `(c
 
 ### Unbuffered Channels
 
-A channel, is a communication vessel used by goroutines to interact with one another. As stated before by default *Channels* are unbuffered, meaning they cannot hold information. Consequently, if an unbuffered *channel* receives some data it has to immediately send it somewhere. 
+A channel is a communication vessel used by goroutines to interact with one another. As stated before by default *Channels* are unbuffered, meaning they cannot hold information. Consequently, if an unbuffered *channel* receives some data it has to immediately send it somewhere. 
 
 Let's look at this example
 
@@ -95,6 +95,7 @@ Let's look at this example
 import "fmt"
 
 func main(){
+
 	ch := make(chan int) // Making a channel that takes in integers
 
 	ch <- 10 // the value 10 is sent to the channel, this the channel's sender
@@ -110,7 +111,7 @@ The program will get stuck on the channel send operation waiting forever for a g
 
 This is called a deadlock, a deadlock happens when a group of goroutines are waiting for each other and none of them is able to proceed.
 
-It's like playing hot-potato but you're only person playing with no one to hand the potato too, you would lose immediately.
+It's like playing hot potato but you're the only person playing with no one to hand the potato to, you would lose immediately.
 
 A workaround deadlock is to add a *goroutine* 
 
@@ -119,6 +120,7 @@ A workaround deadlock is to add a *goroutine*
 import "fmt"
 
 func main(){
+
 	ch := make(chan int) // Making a channel that takes in integers
 
 	// Created a goroutine that contains the sender 
@@ -127,20 +129,19 @@ func main(){
 	}()
 
 	v := <- ch // the variable v receives the channel's value, this is the receiver
-
 	fmt.Println("Received", v)
 }
 ```
 
 
 {{<callout type="warning">}}
- In the above code snippet, we only have 1 goroutine and channels require 2 goroutines to operate. Well the code does actually contain 2 goroutines. The first is the go func and the second is the generated goroutine.
+ In the above code snippet, we only have 1 goroutine and channels require 2 goroutines to operate. Well, the code does actually contain 2 goroutines. The first is the go func and the second is the generated goroutine.
 {{</callout>}}
 
 
 ### Buffered Channels
 
-Unlike unbuffered channels, buffered channels have a capacity attribute, meaning they can hold on an `n` number of values.
+Unlike unbuffered channels, buffered channels have a capacity attribute, meaning they can hold an `n` number of values.
 
 ```go {filename = "Buffered Channels"}
 
@@ -163,7 +164,7 @@ func main(){
 
 Contrary to unbuffered channels, the code snippet won't result in a deadlock. This is because the sender of a buffered channel only blocks when the channel is full - while the receiver only blocks when the channel is empty. 
 
-The added attribue of buffered channels creates a new problem, lets look at it with this simple example. 
+The added attribute of buffered channels creates a new problem, let's look at it with this simple example. 
 
 ```go {filname = "Problem with Buffered Channels"}
 
@@ -188,7 +189,7 @@ func main(){
 ```
 
 
-Running the code will result in a deadlock, the sender has infinitely blocked. This is because the channel is full and got sent another value before the channel is freed up.
+Running the code will result in a deadlock, the sender is infinitely blocked. This is because the channel is full and got sent another value before the channel is freed up.
 
 This problem can be solved by either increasing the capacity of the channel
 
@@ -233,6 +234,7 @@ package main
 import "fmt"
 
 func main() {
+
 	ch := make(chan int, 1) // Making a channel that takes in integers
 
 	// Created a goroutine that contains the sender
@@ -260,6 +262,6 @@ func main() {
 ## Got It
 
 
-Concurrency is one the strengths that make go so powerful and popular. Goroutines are the power of concurrency in go, they are functions that can run concurrently. Channels are how these goroutines can send and receive data between each other. 
+Concurrency is one of the strengths that make Go so powerful and popular. Goroutines are the power of concurrency in go, they are functions that can run concurrently. Channels are how these goroutines can send and receive data between each other. 
 
 
