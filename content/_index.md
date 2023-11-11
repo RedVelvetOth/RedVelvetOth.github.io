@@ -11,7 +11,7 @@ layout: hextra-home
 
 <div class="mb-12">
 {{< hextra/hero-subtitle >}}
-  Thoughts and note from student on CS &nbsp;<br class="sm:block hidden" />and other topics I'm passionate about &nbsp;<br class="sm:block hidden" /> avionics, history and other nerdy topics
+  Thoughts and notes from student on CS &nbsp;<br class="sm:block hidden" />and other topics I'm passionate about &nbsp;<br class="sm:block hidden" /> avionics, history and other nerdy topics
 {{< /hextra/hero-subtitle >}}
 </div>
 
